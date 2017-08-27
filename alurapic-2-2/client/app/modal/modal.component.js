@@ -15,28 +15,28 @@ var ModalComponent = (function () {
         this.element = element;
         this.titulo = 'Tem certeza?';
         this.confirma = new core_1.EventEmitter();
-        this._element = element;
+        this.element = element;
     }
     ModalComponent.prototype.ngAfterViewInit = function () {
         var _this = this;
-        $(this._element.nativeElement).dialog({
+        $(this.element.nativeElement).dialog({
             title: this.titulo,
             autoOpen: false,
             resizable: false,
             modal: true,
             buttons: {
                 Cancelar: function () {
-                    $(_this._element.nativeElement).dialog("close");
+                    $(_this.element.nativeElement).dialog("close");
                 },
                 Confirmar: function () {
-                    $(_this._element.nativeElement).dialog("close");
+                    $(_this.element.nativeElement).dialog("close");
                     _this.confirma.emit(null);
                 }
             }
         });
     };
     ModalComponent.prototype.show = function () {
-        $(this._element.nativeElement).dialog('open');
+        $(this.element.nativeElement).dialog('open');
     };
     return ModalComponent;
 }());

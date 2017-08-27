@@ -14,22 +14,22 @@ export class ModalComponent implements AfterViewInit{
 
     constructor(private element: ElementRef) {
 
-        this._element = element;
+        this.element = element;
     }
 
     ngAfterViewInit() {
 
-        $(this._element.nativeElement).dialog({
+        $(this.element.nativeElement).dialog({
                 title: this.titulo,
                 autoOpen: false,
                 resizable: false,
                 modal: true,
                 buttons: {
                     Cancelar: ()=> {
-                        $(this._element.nativeElement).dialog( "close" );
+                        $(this.element.nativeElement).dialog( "close" );
                     },
                     Confirmar: ()=> {
-                        $(this._element.nativeElement).dialog( "close" );
+                        $(this.element.nativeElement).dialog( "close" );
                         this.confirma.emit(null);
                     }
                 }
@@ -39,6 +39,6 @@ export class ModalComponent implements AfterViewInit{
 
     show() {
 
-        $(this._element.nativeElement).dialog('open');
+        $(this.element.nativeElement).dialog('open');
     }
 }
