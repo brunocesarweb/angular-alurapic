@@ -3,15 +3,8 @@ import { ImmediateClickDirective } from "./immediate-click.directive";
 import { CommonModule } from "@angular/common";
 
 @NgModule({
-    declarations: [
-        ImmediateClickDirective
-    ],
-    exports: [
-        ImmediateClickDirective
-    ],
-    imports: [
-        CommonModule
-    ]
+    declarations: [ImmediateClickDirective],
+    exports: [ImmediateClickDirective],
+    imports: [CommonModule]
 })
-
-export class ImmediateClickModule {}
+export class ImmediateClickModule { }
