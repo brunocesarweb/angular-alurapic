@@ -3,10 +3,12 @@ import { Injectable } from '@angular/core';
 
 import { Photo } from "./photo";
 import { PhotoComment } from './photo-comment';
-import { catchError, map } from 'rxjs/operators';
+
+import { environment } from '../../../environments/environment';
+import { map, catchError } from 'rxjs/operators';
 import { of, throwError } from 'rxjs';
 
-const API = 'http://localhost:3000';
+const API = environment.ApiUrl;
 
 @Injectable({ providedIn: 'root' })
 export class PhotoService {
@@ -56,8 +58,7 @@ export class PhotoService {
         );        
     }
 
-    removePhoto(photoId: number){
-        
+    removePhoto(photoId: number) {
         return this.http.delete(API + '/photos/' + photoId);
     }
 
@@ -68,7 +69,7 @@ export class PhotoService {
         )
         .pipe(map(res => true))
         .pipe(catchError(err => {
-            return err.status = '304' ? of(false) : throwError(err);
+            return err.status == '304' ? of(false) : throwError(err);
         }));
     }
 }
